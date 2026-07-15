@@ -1659,7 +1659,7 @@ function renderPlaybook(ev){
             <div style="font-size:11px;color:rgba(255,80,80,.55);margin-top:3px;font-style:italic">At risk — may not show up</div>
           </div>
           ${naPops.map(function(p){return mkPop(p);}).join('')}
-          ${mkBtn(naUrl,'Needs Address Report','#FF5050')}
+          ${mkBtn(naUrl,'Needs Address Report','#FF5050')}${evData.attendanceReport?mkBtn(evData.attendanceReport.url,evData.attendanceReport.label,'#FF5050'):''}
         </div>
       </div>`;
     }
@@ -1701,10 +1701,7 @@ function renderPlaybook(ev){
         </div>
       </div>`;
     }
-    if(ev.attendanceReport){
-      const arBtn=`<a href="${ev.attendanceReport.url}" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:5px;font-size:12px;font-weight:600;color:#FF5050;text-decoration:none;background:#FF505018;padding:5px 12px;border-radius:var(--rs);border:1px solid #FF505044;margin-top:8px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>${ev.attendanceReport.label} ↗</a>`;
-      body=body.replace('</div>`;','</div>'+arBtn+'`');
-    }
+
     if(ev.sfUrl){
       body+=`<div class="divider"></div>
       <a href="${ev.sfUrl}" target="_blank" rel="noopener" class="sf-btn">

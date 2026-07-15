@@ -1464,12 +1464,14 @@ const evPopulations = {
     ouReport: {url:'https://robbinsresearch-my.sharepoint.com/:x:/g/personal/courtney_mott_tonyrobbins_com/IQCgYGDgR6sJT6FoKKFWOrSgAUE0A8S3Mt6gwwJx2-DsNtg?e=KGz9bj',label:'BM Open Unknown Report'},
     bdReport: {url:'https://robbinsresearch-my.sharepoint.com/:x:/g/personal/courtney_mott_tonyrobbins_com/IQBpSv4SGq71Q6CmR78NnBfFAavQogvJcM63ws309vzaLnI?e=DnU6vM',label:'BM Registered Balance Dues Report'},
     naReport: {url:'https://robbinsresearch-my.sharepoint.com/:x:/g/personal/courtney_mott_tonyrobbins_com/IQBbynbDf0B5RJTetGqlBAWQAc5Lyw7UBuGKZs_JteLFMLw?e=KENhY3',label:'BM Needs Address Report'},
+    attendanceReport: {url:'https://robbinsresearch-my.sharepoint.com/:x:/g/personal/courtney_mott_tonyrobbins_com/IQBG3zM7fuNIS4QrEqqAYLkRAa0xXzvUBJT2uB3j2OYMHgE?e=raoYZv',label:'BM Attendance Confirmation Report'},
     pops:[
-      {name:'PIF UILI',            badgeColor:'#3D9EFF'},
-      {name:'PIF Non-UILI',        badgeColor:'#3D9EFF'},
-      {name:'Balance Due UILI',    badgeColor:'#3D9EFF'},
-      {name:'Balance Due Non-UILI',badgeColor:'#3D9EFF'},
-      {name:'Needs Address',       badgeColor:'#3D9EFF'},
+      {name:'PIF UILI',            badgeColor:'#3D9EFF', col:'ou'},
+      {name:'PIF Non-UILI',        badgeColor:'#3D9EFF', col:'ou'},
+      {name:'Balance Due UILI',    badgeColor:'#3D9EFF', col:'ou'},
+      {name:'Balance Due Non-UILI',badgeColor:'#3D9EFF', col:'ou'},
+      {name:'Needs Address',       badgeColor:'#FF5050', col:'na'},
+      {name:'Attendance Confirmation (Non-Responders)', badgeColor:'#FF5050', col:'na'},
     ],
   },
   abm26: {
@@ -1683,6 +1685,26 @@ function renderPlaybook(ev){
       <div style="font-size:12px;color:var(--text2);line-height:1.5">Run the dupes report before each outreach cycle to ensure you are not contacting clients who are already registered or have recently converted. Reach out to your team lead if you need access.</div>
     </div>`;
     // ── Salesforce dashboard ───────────────────────────────────────────
+    if(ev.id==='bm26'){
+      body+=`<div class="divider"></div>
+      <div class="sec-label">BM Community</div>
+      <div class="card-box">
+        <div class="row-item">
+          <div class="dl-dot" style="background:#3D9EFF"></div>
+          <span class="row-text">
+            <a href="https://tonyr.co/BM26community" target="_blank" rel="noopener" style="color:#3D9EFF;font-weight:600;text-decoration:none">tonyr.co/BM26community ↗</a>
+          </span>
+        </div>
+        <div class="row-item" style="margin-top:6px">
+          <div class="dl-dot" style="background:var(--text3)"></div>
+          <span class="row-text" style="color:var(--text2);font-size:12px">Attendance Confirmation outreach: call, leave a voicemail, text, then update the confirmation box in Salesforce.</span>
+        </div>
+      </div>`;
+    }
+    if(ev.attendanceReport){
+      const arBtn=`<a href="${ev.attendanceReport.url}" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:5px;font-size:12px;font-weight:600;color:#FF5050;text-decoration:none;background:#FF505018;padding:5px 12px;border-radius:var(--rs);border:1px solid #FF505044;margin-top:8px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>${ev.attendanceReport.label} ↗</a>`;
+      body=body.replace('</div>`;','</div>'+arBtn+'`');
+    }
     if(ev.sfUrl){
       body+=`<div class="divider"></div>
       <a href="${ev.sfUrl}" target="_blank" rel="noopener" class="sf-btn">

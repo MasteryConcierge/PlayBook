@@ -682,7 +682,7 @@ const TABS=[
   {id:'checklist',label:'Pre-call prep'}
 ];;
 
-let cId=null, cTab='overview', cView='cal', calMonth=3, modMonth=1, mmMonth=1;
+let cId=null, cTab='overview', cView='cal', calMonth=4, modMonth=2, mmMonth=2;
 
 // All months in order
 const MONTHS = [
@@ -790,15 +790,6 @@ const DEADLINES=[
   {date:'2027-04-15',label:'LM Apr: Enrollment deadline',color:'#00C896',light:'#003D2A',evId:'lm27'},
 ,
   // Mastery Community Event Touchpoints — Virtual Prep Parties
-  {date:'2026-06-11',label:'🎯 Life Mastery: Virtual Prep Party',color:'#FAE96B',light:'#241800',evId:'lm26'},
-  {date:'2026-07-30',label:'🎯 Business Mastery: Virtual Prep Party',color:'#FAE96B',light:'#241800',evId:'bm26'},
-  {date:'2026-09-30',label:'🎯 ABM: Virtual Prep Party',color:'#FAE96B',light:'#241800',evId:'abm26'},
-  {date:'2026-11-20',label:'🎯 DWD: Virtual Prep Party',color:'#FAE96B',light:'#241800',evId:'dwd26'},
-  // Mastery Community Event Touchpoints — Completion Celebrations
-  {date:'2026-07-06',label:'🎉 Life Mastery: Completion Celebration',color:'#FAE96B',light:'#241800',evId:'lm26'},
-  {date:'2026-08-20',label:'🎉 Business Mastery: Completion Celebration',color:'#FAE96B',light:'#241800',evId:'bm26'},
-  {date:'2026-10-22',label:'🎉 ABM: Completion Celebration',color:'#FAE96B',light:'#241800',evId:'abm26'},
-  {date:'2026-12-16',label:'🎉 DWD: Completion Celebration',color:'#FAE96B',light:'#241800',evId:'dwd26'},
 ,
   // Business Forums — Monthly 1st Tuesday 3:00pm EST
   {date:'2026-05-05',label:'📋 Business Forum · 3:00pm EST',color:'#A8C8E8',light:'#0D1E2E',evId:null},
@@ -851,19 +842,13 @@ const DEADLINES=[
   {date:'2027-01-01',label:"🏛 New Year's Day",color:'#C4A8FF',light:'#HOLIDAY',evId:null},
 
   // MC Community Event Assignments
-  {date:'2026-07-06',label:'🎉 LM Completion · Aleks · Breanna · Sally · 3:00PM ET',color:'#00C896',light:'#0A1D2E',evId:'lm26'},
   {date:'2026-07-30',label:'📞 Community Call · Sally · Amelia · Carmen · 2:00PM ET',color:'#00D4E8',light:'#0A1D2E',evId:null},
-  {date:'2026-08-06',label:'🎯 BM Prep Party · Aleks · Sally · Donavan · 3:00PM ET',color:'#3D9EFF',light:'#0A1D2E',evId:'bm26'},
-  {date:'2026-08-20',label:'🎉 BM Completion · Sally · Breanna · Donavan · 3:00PM ET',color:'#3D9EFF',light:'#0A1D2E',evId:'bm26'},
   {date:'2026-08-27',label:'📞 Community Call · Cleo · Donavan · Amelia · 2:00PM ET',color:'#00D4E8',light:'#0A1D2E',evId:null},
   {date:'2026-09-24',label:'📞 Community Call · Amelia · Cleo · Chris · 2:00PM ET',color:'#00D4E8',light:'#0A1D2E',evId:null},
-  {date:'2026-09-30',label:'🎯 ABM Prep Party · Amelia · Maddie · Carmen · 3:00PM ET',color:'#FF9B40',light:'#0A1D2E',evId:'abm26'},
-  {date:'2026-10-22',label:'🎉 ABM Completion · Amelia · Maddie · Chris · 3:00PM ET',color:'#FF9B40',light:'#0A1D2E',evId:'abm26'},
   {date:'2026-10-29',label:'📞 Community Call · Donavan · Maddie · Breanna · 2:00PM ET',color:'#00D4E8',light:'#0A1D2E',evId:null},
-  {date:'2026-11-20',label:'🎯 DWD Prep Party · Donavan · Breanna · Cleo · 3:00PM ET',color:'#FF4DB8',light:'#0A1D2E',evId:'dwd26'},
   {date:'2026-11-23',label:'📞 Community Call · Aleks · Maddie · 2:00PM ET',color:'#00D4E8',light:'#0A1D2E',evId:null},
-  {date:'2026-12-16',label:'🎉 DWD Completion · Donavan · Cleo · Amelia · 3:00PM ET',color:'#FF4DB8',light:'#0A1D2E',evId:'dwd26'},
   {date:'2026-12-21',label:'📞 Community Call · Breanna · 2:00PM ET',color:'#00D4E8',light:'#0A1D2E',evId:null},
+  {date:'2026-09-11',label:'🎯 UPW Orientation (EN/DE) · 10:00 AM ET · Room Open 9:30 · Countdown 9:35 · End 10:30',color:'#00D4E8',light:'#0A1D2E',evId:'upwnov'},
 ];
 
 DEADLINES.forEach(dl=>{
@@ -1240,7 +1225,7 @@ function renderMMCal() {
     var nfzInfo=NFZ_DAYS[ds]||[];
     var isHoliday=dls.some(function(x){return x.light==='#HOLIDAY';});
     var isNFZ=nfzInfo.length>0;
-    var OOO_DATES=["2026-07-01", "2026-07-02"];
+    var OOO_DATES=["2026-07-01", "2026-07-02", "2026-09-09"];
     var isOOO=OOO_DATES.indexOf(ds)>=0;
     var cls=isHoliday?'cal-cell holiday':isOOO?'cal-cell weekend-cell':'cal-cell';
     h+='<div class="'+cls+'">';
@@ -1262,7 +1247,6 @@ function renderMMCal() {
       if(ds==='2026-07-16') h+='<span class="cal-pill" style="background:#8FF0D425;color:#8FF0D4">Donavan</span>';
       if(ds==='2026-07-17') h+='<span class="cal-pill" style="background:#FFB34725;color:#FFB347">Heather</span>';
       if(ds==='2026-07-17') h+='<span class="cal-pill" style="background:#F0808025;color:#F08080">Maddie</span>';
-      if(ds==='2026-07-17') h+='<span class="cal-pill" style="background:#7ED98F25;color:#7ED98F">Sally</span>';
       if(ds==='2026-07-20') h+='<span class="cal-pill" style="background:#9B6DFF25;color:#9B6DFF">Amelia-Rose</span>';
       if(ds==='2026-07-20') h+='<span class="cal-pill" style="background:#00C89625;color:#00C896">Aleksandra</span>';
       if(ds==='2026-07-21') h+='<span class="cal-pill" style="background:#FFD70025;color:#FFD700">Ananaya</span>';
@@ -1306,48 +1290,28 @@ function renderMMCal() {
       if(ds==='2026-08-28') h+='<span class="cal-pill" style="background:#00C89625;color:#00C896">Aleksandra</span>';
       if(ds==='2026-08-31') h+='<span class="cal-pill" style="background:#FF4DB825;color:#FF4DB8">Cleo</span>';
       if(ds==='2026-08-31') h+='<span class="cal-pill" style="background:#FFD70025;color:#FFD700">Ananaya</span>';
-      if(ds==='2026-09-01') h+='<span class="cal-pill" style="background:#8FF0D425;color:#8FF0D4">Donavan</span>';
-      if(ds==='2026-09-01') h+='<span class="cal-pill" style="background:#9B6DFF25;color:#9B6DFF">Amelia-Rose</span>';
-      if(ds==='2026-09-02') h+='<span class="cal-pill" style="background:#FFB34725;color:#FFB347">Heather</span>';
-      if(ds==='2026-09-02') h+='<span class="cal-pill" style="background:#00C89625;color:#00C896">Aleksandra</span>';
-      if(ds==='2026-09-03') h+='<span class="cal-pill" style="background:#88888825;color:#888888">Maria</span>';
-      if(ds==='2026-09-03') h+='<span class="cal-pill" style="background:#FFD70025;color:#FFD700">Ananaya</span>';
-      if(ds==='2026-09-04') h+='<span class="cal-pill" style="background:#7ED98F25;color:#7ED98F">Sally</span>';
-      if(ds==='2026-09-04') h+='<span class="cal-pill" style="background:#FF6B6B25;color:#FF6B6B">Bre</span>';
-      if(ds==='2026-09-08') h+='<span class="cal-pill" style="background:#F0808025;color:#F08080">Maddie</span>';
-      if(ds==='2026-09-08') h+='<span class="cal-pill" style="background:#40B8FF25;color:#40B8FF">Chris</span>';
-      if(ds==='2026-09-09') h+='<span class="cal-pill" style="background:#00C89625;color:#00C896">Aleksandra</span>';
-      if(ds==='2026-09-09') h+='<span class="cal-pill" style="background:#FF9B4025;color:#FF9B40">Carmen</span>';
-      if(ds==='2026-09-10') h+='<span class="cal-pill" style="background:#88888825;color:#888888">Amelia</span>';
-      if(ds==='2026-09-10') h+='<span class="cal-pill" style="background:#FF4DB825;color:#FF4DB8">Cleo</span>';
+      if(ds==='2026-09-08') h+='<span class="cal-pill" style="background:#9B6DFF25;color:#9B6DFF">Amelia-Rose</span>';
+      if(ds==='2026-09-08') h+='<span class="cal-pill" style="background:#FFB34725;color:#FFB347">Heather</span>';
+      if(ds==='2026-09-10') h+='<span class="cal-pill" style="background:#FF6B6B25;color:#FF6B6B">Bre</span>';
+      if(ds==='2026-09-10') h+='<span class="cal-pill" style="background:#F0808025;color:#F08080">Maddie</span>';
       if(ds==='2026-09-11') h+='<span class="cal-pill" style="background:#FFD70025;color:#FFD700">Ananaya</span>';
-      if(ds==='2026-09-11') h+='<span class="cal-pill" style="background:#8FF0D425;color:#8FF0D4">Donavan</span>';
-      if(ds==='2026-09-14') h+='<span class="cal-pill" style="background:#88888825;color:#888888">Breanna</span>';
-      if(ds==='2026-09-14') h+='<span class="cal-pill" style="background:#FFB34725;color:#FFB347">Heather</span>';
-      if(ds==='2026-09-15') h+='<span class="cal-pill" style="background:#FF9B4025;color:#FF9B40">Carmen</span>';
-      if(ds==='2026-09-15') h+='<span class="cal-pill" style="background:#F0808025;color:#F08080">Maddie</span>';
-      if(ds==='2026-09-16') h+='<span class="cal-pill" style="background:#40B8FF25;color:#40B8FF">Chris</span>';
-      if(ds==='2026-09-16') h+='<span class="cal-pill" style="background:#9B6DFF25;color:#9B6DFF">Amelia-Rose</span>';
+      if(ds==='2026-09-11') h+='<span class="cal-pill" style="background:#7ED98F25;color:#7ED98F">Sally</span>';
+      if(ds==='2026-09-14') h+='<span class="cal-pill" style="background:#00C89625;color:#00C896">Aleksandra</span>';
+      if(ds==='2026-09-15') h+='<span class="cal-pill" style="background:#40B8FF25;color:#40B8FF">Chris</span>';
+      if(ds==='2026-09-16') h+='<span class="cal-pill" style="background:#FF9B4025;color:#FF9B40">Carmen</span>';
       if(ds==='2026-09-17') h+='<span class="cal-pill" style="background:#FF4DB825;color:#FF4DB8">Cleo</span>';
-      if(ds==='2026-09-17') h+='<span class="cal-pill" style="background:#00C89625;color:#00C896">Aleksandra</span>';
       if(ds==='2026-09-18') h+='<span class="cal-pill" style="background:#8FF0D425;color:#8FF0D4">Donavan</span>';
-      if(ds==='2026-09-18') h+='<span class="cal-pill" style="background:#FFD70025;color:#FFD700">Ananaya</span>';
-      if(ds==='2026-09-21') h+='<span class="cal-pill" style="background:#FFB34725;color:#FFB347">Heather</span>';
-      if(ds==='2026-09-21') h+='<span class="cal-pill" style="background:#FF6B6B25;color:#FF6B6B">Bre</span>';
-      if(ds==='2026-09-22') h+='<span class="cal-pill" style="background:#88888825;color:#888888">Maria</span>';
-      if(ds==='2026-09-22') h+='<span class="cal-pill" style="background:#40B8FF25;color:#40B8FF">Chris</span>';
-      if(ds==='2026-09-23') h+='<span class="cal-pill" style="background:#7ED98F25;color:#7ED98F">Sally</span>';
-      if(ds==='2026-09-23') h+='<span class="cal-pill" style="background:#FF9B4025;color:#FF9B40">Carmen</span>';
-      if(ds==='2026-09-24') h+='<span class="cal-pill" style="background:#F0808025;color:#F08080">Maddie</span>';
-      if(ds==='2026-09-24') h+='<span class="cal-pill" style="background:#FF4DB825;color:#FF4DB8">Cleo</span>';
+      if(ds==='2026-09-21') h+='<span class="cal-pill" style="background:#FF9B4025;color:#FF9B40">Carmen</span>';
+      if(ds==='2026-09-22') h+='<span class="cal-pill" style="background:#FF4DB825;color:#FF4DB8">Cleo</span>';
+      if(ds==='2026-09-23') h+='<span class="cal-pill" style="background:#8FF0D425;color:#8FF0D4">Donavan</span>';
+      if(ds==='2026-09-24') h+='<span class="cal-pill" style="background:#9B6DFF25;color:#9B6DFF">Amelia-Rose</span>';
+      if(ds==='2026-09-24') h+='<span class="cal-pill" style="background:#FFB34725;color:#FFB347">Heather</span>';
       if(ds==='2026-09-25') h+='<span class="cal-pill" style="background:#00C89625;color:#00C896">Aleksandra</span>';
-      if(ds==='2026-09-25') h+='<span class="cal-pill" style="background:#8FF0D425;color:#8FF0D4">Donavan</span>';
-      if(ds==='2026-09-28') h+='<span class="cal-pill" style="background:#88888825;color:#888888">Amelia</span>';
-      if(ds==='2026-09-28') h+='<span class="cal-pill" style="background:#FFB34725;color:#FFB347">Heather</span>';
-      if(ds==='2026-09-29') h+='<span class="cal-pill" style="background:#FFD70025;color:#FFD700">Ananaya</span>';
-      if(ds==='2026-09-29') h+='<span class="cal-pill" style="background:#F0808025;color:#F08080">Maddie</span>';
-      if(ds==='2026-09-30') h+='<span class="cal-pill" style="background:#88888825;color:#888888">Breanna</span>';
-      if(ds==='2026-09-30') h+='<span class="cal-pill" style="background:#7ED98F25;color:#7ED98F">Sally</span>';
+      if(ds==='2026-09-25') h+='<span class="cal-pill" style="background:#F0808025;color:#F08080">Maddie</span>';
+      if(ds==='2026-09-28') h+='<span class="cal-pill" style="background:#FFD70025;color:#FFD700">Ananaya</span>';
+      if(ds==='2026-09-28') h+='<span class="cal-pill" style="background:#7ED98F25;color:#7ED98F">Sally</span>';
+      if(ds==='2026-09-29') h+='<span class="cal-pill" style="background:#FF6B6B25;color:#FF6B6B">Bre</span>';
+      if(ds==='2026-09-30') h+='<span class="cal-pill" style="background:#40B8FF25;color:#40B8FF">Chris</span>';
       if(ds==='2026-10-01') h+='<span class="cal-pill" style="background:#FF9B4025;color:#FF9B40">Carmen</span>';
       if(ds==='2026-10-01') h+='<span class="cal-pill" style="background:#9B6DFF25;color:#9B6DFF">Amelia-Rose</span>';
       if(ds==='2026-10-02') h+='<span class="cal-pill" style="background:#40B8FF25;color:#40B8FF">Chris</span>';

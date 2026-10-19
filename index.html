@@ -1468,7 +1468,8 @@ const evPopulations = {
     ],
   },
   dwd26: {
-    ouReport: {url:'',label:'DWD Open Unknown Report'},
+    ouReport: {url:'https://robbinsresearch-my.sharepoint.com/:x:/g/personal/courtney_mott_tonyrobbins_com/IQDE7chdxNCUSp8XU4C4Wb9-AYHjQXt4x7_1ShKzqjl_wWQ?e=aL1ak5',label:'DWD OU PIF Report (UILI and Non-UILI)'},
+    ouReport2: {url:'https://robbinsresearch-my.sharepoint.com/:x:/g/personal/courtney_mott_tonyrobbins_com/IQBJfuD0rl3uS5LPPVLSyWoeAcYp-pTO0OrsSoU0cbDUx2E?e=1tL6OB',label:'DWDL OU PIF Report (UILI and Non-UILI)'},
     bdReport: {url:'https://robbinsresearch-my.sharepoint.com/:x:/g/personal/courtney_mott_tonyrobbins_com/IQBkNuncAUzqQICDgUf8L2wtAeFF9d6Zoe_VZFm0CytMBsM?e=6BAe5w',label:'DWD Registered Balance Dues Report'},
     naReport: {url:'https://robbinsresearch-my.sharepoint.com/:x:/g/personal/courtney_mott_tonyrobbins_com/IQC31b_epcdvRqGoy3XtW-fhAUb9IYPxpOSm5tN0DxzUoa4?e=sTrrWz',label:'DWD Needs Address Report'},
     dupesReport: {url:'https://robbinsresearch-my.sharepoint.com/:x:/g/personal/courtney_mott_tonyrobbins_com/IQCkUGyq_Pb_S5McK9AhvgRGAXWtxx3L3KOWrGDZ5ePiUI8?e=Ym77R6',label:'DWD Dupes Report'},
@@ -1616,7 +1617,7 @@ function renderPlaybook(ev){
             <div style="font-size:11px;color:rgba(0,200,150,.55);margin-top:3px;font-style:italic">Active outreach</div>
           </div>
           ${ouPops.map(function(p){return mkPop(p);}).join('')}
-          ${mkBtn(ouUrl,'Open Unknown Report','#00C896')}
+          ${mkBtn(ouUrl,'Open Unknown Report','#00C896')}${evData.ouReport2?mkBtn(evData.ouReport2.url,evData.ouReport2.label,'#00C896'):''}
         </div>
         ${evData.bdReport?`<div style="flex:1;min-width:0;background:rgba(250,180,0,.07);border:1px solid rgba(250,180,0,.25);border-radius:var(--r);padding:1rem;display:flex;flex-direction:column;gap:8px">
           <div style="display:flex;flex-direction:column;align-items:center;text-align:center;margin-bottom:6px;padding-bottom:8px;border-bottom:1px solid rgba(250,180,0,.2)">

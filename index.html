@@ -1472,7 +1472,7 @@ const evPopulations = {
     ouReport2: {url:'https://robbinsresearch-my.sharepoint.com/:x:/g/personal/courtney_mott_tonyrobbins_com/IQBJfuD0rl3uS5LPPVLSyWoeAcYp-pTO0OrsSoU0cbDUx2E?e=1tL6OB',label:'DWDL OU PIF Report (UILI and Non-UILI)'},
     bdReport: {url:'https://robbinsresearch-my.sharepoint.com/:x:/g/personal/courtney_mott_tonyrobbins_com/IQBkNuncAUzqQICDgUf8L2wtAeFF9d6Zoe_VZFm0CytMBsM?e=6BAe5w',label:'DWD Registered Balance Dues Report'},
     naReport: {url:'https://robbinsresearch-my.sharepoint.com/:x:/g/personal/courtney_mott_tonyrobbins_com/IQC31b_epcdvRqGoy3XtW-fhAUb9IYPxpOSm5tN0DxzUoa4?e=sTrrWz',label:'DWD Needs Address Report'},
-    dupesReport: {url:'https://robbinsresearch-my.sharepoint.com/:x:/g/personal/courtney_mott_tonyrobbins_com/IQCkUGyq_Pb_S5McK9AhvgRGAXWtxx3L3KOWrGDZ5ePiUI8?e=Ym77R6',label:'DWD Dupes Report'},
+    dupesReport: {url:'https://robbinsresearch-my.sharepoint.com/:x:/g/personal/courtney_mott_tonyrobbins_com/IQCOR8Q7fOJDR5REu2rxujHSASiRe-ouvzxTk4zFMe64KlQ?e=hOPQDl',label:'DWD Dupes Report'},
     pops:[
       {name:'PIF UILI',                        badgeColor:'#FF4DB8', col:'ou'},
       {name:'PIF Non-UILI',                    badgeColor:'#FF4DB8', col:'ou'},
@@ -1663,6 +1663,17 @@ function renderPlaybook(ev){
       <div style="font-size:12px;color:var(--text2);line-height:1.5">Run the dupes report before each outreach cycle to ensure you are not contacting clients who are already registered or have recently converted. Reach out to your team lead if you need access.</div>
       ${dupesBtn}
     </div>`;
+    if(ev.id==='dwd26'){
+      body+=`<div class="divider"></div>
+      <div class="special-box">
+        <div style="font-size:11px;font-weight:700;color:#FF4DB8;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.4rem">Client questionnaire link</div>
+        <div style="font-size:12px;color:var(--text2);line-height:1.5;margin-bottom:.6rem">Copy and paste this link to clients so they can complete their questionnaire.</div>
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+          <div style="flex:1;min-width:200px;font-size:12px;color:var(--text);background:var(--bg3);border:1px solid rgba(255,77,184,.3);border-radius:var(--rs);padding:8px 10px;user-select:all;word-break:break-all">https://destinypreevent.com/questionnaire#/signin</div>
+          <button data-copy="https://destinypreevent.com/questionnaire#/signin" onclick="navigator.clipboard.writeText(this.dataset.copy);this.innerText='Copied'" style="font-size:12px;font-weight:600;color:#FF4DB8;background:rgba(255,77,184,.1);border:1px solid rgba(255,77,184,.4);border-radius:var(--rs);padding:8px 14px;cursor:pointer">Copy link</button>
+        </div>
+      </div>`;
+    }
     // ── Salesforce dashboard ───────────────────────────────────────────
     if(ev.id==='bm26'){
       body+=`<div class="divider"></div>
